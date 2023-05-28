@@ -27,7 +27,7 @@ if (process.env.NODE_MODE === 'production') {
   app.use(express.static('client/build'))
 
   app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname,'client','build','index.js'))
+    res.sendFile(path.resolve(__dirname,'client','build','index.html'))
   })
 }
 app.listen(port,console.log(`Server running in ${process.env.NODE_MODE} mode on port ${port}`))

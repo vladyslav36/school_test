@@ -12,7 +12,7 @@ function App() {
   const [foods, setFoods] = useState([])
   const [shops, setShops] = useState([])
   const [cart, setCart] = useState([])
-  
+
   useEffect(() => {
     const getFoods = async () => {
       const res = await fetch(`${API_URL}/api/foods`)
@@ -30,32 +30,34 @@ function App() {
     getShops()
   }, [])
 
- 
-
   return (
     <>
       <Router>
         <div>
-          
           <Header cart={cart} />
-          
+
           <div className={styles.main}>
             <Routes>
               <Route
                 path="/"
                 exact
-                element={<Home shops={shops} foods={foods} cart={cart} setCart={setCart} />}
+                element={
+                  <Home
+                    shops={shops}
+                    foods={foods}
+                    cart={cart}
+                    setCart={setCart}
+                  />
+                }
               />
               <Route
                 path="/cart"
-                element={<Cart  cart={cart} />}
+                element={<Cart cart={cart} setCart={setCart} />}
               />
             </Routes>
           </div>
 
-        
-            <Footer />
-          
+          <Footer />
         </div>
       </Router>
     </>

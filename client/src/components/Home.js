@@ -23,7 +23,7 @@ export default function Home({ shops = [], foods = [], cart = [],setCart }) {
     }
     
   }
-  console.log(cart)
+
  
   return (
     <div className={styles.container}>

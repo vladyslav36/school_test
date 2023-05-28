@@ -2,8 +2,9 @@ import React, { useState } from "react"
 import { Link, useParams } from "react-router-dom"
 import styles from "../styles/Cart.module.scss"
 import { API_URL } from "../config"
+import { FaTimes } from 'react-icons/fa'
 
-export default function Cart({ cart }) {
+export default function Cart({ cart,setCart }) {
   const totalAmount = cart.reduce((acc, item) => acc + parseInt(item.qnt) * parseInt(item.price), 0).toString()
   const [values, setValues] = useState({
     name: '',
@@ -11,9 +12,16 @@ export default function Cart({ cart }) {
     phone: '',
     email:''
   })
+  const handleDelete=(food)=>{
+    const newCart = cart.filter(item => item.name !== food.name)
+    setCart(newCart)
+  }
   return (
+    
     <>
-     <div className={styles.container}>
+      {cart.length ? (
+        <>
+         <div className={styles.container}>
       <div>
           <h3>Delivery details</h3>
           <div className={styles.delivery_details}>
@@ -30,8 +38,8 @@ export default function Cart({ cart }) {
             <input type="text" id='phone'/>
             </div>
             <div>
-               <label htmlFor="email">Email</label>
-            <input type="text" id='email'/>
+               <label htmlFor="address">Адрес</label>
+            <input type="text" id='address'/>
             </div>
             
            
@@ -51,7 +59,7 @@ export default function Cart({ cart }) {
                   <img src={`${API_URL}${item.image}`} alt="No image" />
                 <p>{item.name}</p>
                 <div><span>Количество:{ item.qnt}</span> <span>Цена: {item.price}</span> </div>
-                  
+                <FaTimes onClick={()=>handleDelete(item) } />
                 </div>
               ))
             : null}
@@ -64,6 +72,15 @@ export default function Cart({ cart }) {
         <h4>Сумма заказа: {totalAmount} грн</h4>
         <div className={styles.submit}>Подтвердить заказ</div>
       </div>
+        </>
+      
+      ) : (
+          <div className={styles.empty_cart }>
+            <h2>Корзина пуста</h2>
+          </div>
+          
+      )}
+    
     </>
    
   )

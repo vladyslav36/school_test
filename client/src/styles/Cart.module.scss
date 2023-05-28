@@ -22,6 +22,7 @@
       font-size: 14px;
       padding: 3px;
       box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+      position:relative;
       img {
         width: 100%;
         height: 100%;
@@ -33,7 +34,6 @@
         display: flex;
         justify-content: space-between;
         padding: 0 5px;
-        
       }
       &:hover {
         cursor: pointer;
@@ -41,48 +41,56 @@
       &:active {
         transform: scale(0.99);
       }
+      svg{
+        position:absolute;
+        top:-15px;
+        right:-15px;
+        color:red;
+        font-size:20px;
+      }
     }
   }
- .delivery_details{
-  margin:20px;
-  padding:0 10px;
-  input,label{
-    display:block;
-  }
-  &>div{
-    padding:5px 0;
-    color:#555;
-    &>label{
-      font-style: italic;
-      font-size: 18px;
-     
+  .delivery_details {
+    margin: 20px;
+    padding: 0 10px;
+    input,
+    label {
+      display: block;
     }
-    &>input{
-      height:30px;
-      font-size: 20px;;
-      padding:0 5px;
-      
+    & > div {
+      padding: 5px 0;
+      color: #555;
+      & > label {
+        font-style: italic;
+        font-size: 18px;
+      }
+      & > input {
+        height: 30px;
+        font-size: 20px;
+        padding: 0 5px;
+      }
     }
   }
-  
-
- }
 }
- .submit_wrapper{
-  padding:10px;
-    display:flex;
-    justify-content: space-between;
-    .submit{
-      border-radius:10px;
-      border:none;
-      background-color: #186A3B;
-      color:#ddd;
-      padding:2px 10px;
-      &:hover{
-        cursor:pointer;
-      }
-      &:active{
-        transform:scale(0.99)
-      }
+.submit_wrapper {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  .submit {
+    border-radius: 10px;
+    border: none;
+    background-color: #186a3b;
+    color: #ddd;
+    padding: 2px 10px;
+    &:hover {
+      cursor: pointer;
+    }
+    &:active {
+      transform: scale(0.99);
     }
   }
+}
+.empty_cart{
+  color:#555;
+  text-align:center;
+}

@@ -14,7 +14,7 @@ export default function Home({ shops = [], foods = [], cart = [],setCart }) {
   const handleCardClick = (shop) => {
    
     const qntFoods = cart.filter(item => item._id === shop._id).length
-    console.log(qntFoods)
+    
     if (qntFoods) {     
       const newCart = cart.map(item => (item.name===shop.name?{...item,qnt:item.qnt+1}:item))
       setCart(newCart)    

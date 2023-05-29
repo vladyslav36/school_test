@@ -12,7 +12,7 @@ body {
 
 .main {
   max-width: 1100px;
-  min-height: 65vh;
+  min-height: calc(100vh - 320px);
   margin: auto;
   background-color: #ecf0f1;
 }

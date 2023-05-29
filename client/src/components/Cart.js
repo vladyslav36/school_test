@@ -3,6 +3,8 @@ import { Link, useParams } from "react-router-dom"
 import styles from "../styles/Cart.module.scss"
 import { API_URL } from "../config"
 import { FaTimes } from 'react-icons/fa'
+import { ToastContainer, toast } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 
 export default function Cart({ cart,setCart }) {
   const totalAmount = cart.reduce((acc, item) => acc + parseInt(item.qnt) * parseInt(item.price), 0).toString()
@@ -16,12 +18,19 @@ export default function Cart({ cart,setCart }) {
     const newCart = cart.filter(item => item.name !== food.name)
     setCart(newCart)
   }
+
+  const handleSubmit = () => {
+    setCart([])
+    toast.success('Заказ успешно отправлен')
+  }
+
   return (
     
     <>
+            <ToastContainer/>
       {cart.length ? (
         <>
-         <div className={styles.container}>
+          <div className={styles.container}>
       <div>
           <h3>Delivery details</h3>
           <div className={styles.delivery_details}>
@@ -70,7 +79,7 @@ export default function Cart({ cart,setCart }) {
       </div>
        <div className={styles.submit_wrapper}>
         <h4>Сумма заказа: {totalAmount} грн</h4>
-        <div className={styles.submit}>Подтвердить заказ</div>
+            <div className={styles.submit} onClick={handleSubmit }>Подтвердить заказ</div>
       </div>
         </>
       

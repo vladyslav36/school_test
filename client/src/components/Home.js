@@ -1,5 +1,6 @@
 import React, { useState } from "react"
-
+import { ToastContainer, toast } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 import styles from "../styles/Home.module.scss"
 import { API_URL } from "../config"
 
@@ -11,22 +12,30 @@ export default function Home({ shops = [], foods = [], cart = [],setCart }) {
      const currentFoods = foods.filter(item => item.shop === shop.name)
      setFoodsByShop(currentFoods)
   }
-  const handleCardClick = (shop) => {
+  const handleCardClick = (food) => {
+    
+    if (cart[0]&&cart[0].shop!==food.shop) {
+      toast.error('В одном заказе должны быть блюда из одного магазина')
+    return
+}
+
    
-    const qntFoods = cart.filter(item => item._id === shop._id).length
+    const qntFoods = cart.filter(item => item._id === food._id).length
     
     if (qntFoods) {     
-      const newCart = cart.map(item => (item.name===shop.name?{...item,qnt:item.qnt+1}:item))
+      const newCart = cart.map(item => (item.name===food.name?{...item,qnt:item.qnt+1}:item))
       setCart(newCart)    
     } else {      
-      setCart([...cart,{...shop,qnt:1}])
+      setCart([...cart,{...food,qnt:1}])
     }
     
   }
 
  
   return (
-    <div className={styles.container}>
+    <>
+      <ToastContainer/>
+     <div className={styles.container}>
       <div className={styles.left_content}>
         <h3>Shops</h3>
         {shops.length ? (
@@ -55,5 +64,7 @@ export default function Home({ shops = [], foods = [], cart = [],setCart }) {
       
       </div>
     </div>
+    </>
+   
   )
 }

@@ -22,6 +22,11 @@ export default function Cart({ cart, setCart }) {
   }
 
   const handleSubmit = () => {
+    const isFill = Object.keys(values).every(key => values[key])    
+    if (!isFill) {
+      toast.error('Все поля в доставке должны быть заполнены')
+      return
+    }
     setCart([])
     toast.success("Заказ успешно отправлен")
   }

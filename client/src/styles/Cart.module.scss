@@ -41,12 +41,22 @@
       &:active {
         transform: scale(0.99);
       }
-      svg{
+      .delete_btn{
         position:absolute;
         top:-15px;
         right:-15px;
         color:red;
         font-size:20px;
+      }
+      .left_footer_card{
+        display:flex;
+        justify-content: flex-start;
+        svg{
+          vertical-align: middle;
+          font-size:20px;    
+          color:green;      
+        }
+       
       }
     }
   }

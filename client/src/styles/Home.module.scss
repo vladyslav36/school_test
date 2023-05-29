@@ -27,6 +27,7 @@
     justify-items: center;
    
     .card{
+      position:relative;
       display:flex;
       flex-direction: column;
       justify-content: space-between;
@@ -44,9 +45,16 @@
        
         margin:0 5px;
       }
-      p:last-child{
+      p:nth-child(3){
         text-align: center;
         background-color: #BFC9CA;
+      }
+      svg{
+        position:absolute;
+        top:-15px;
+        right:-15px;
+        color:#117A65;
+        font-size:18px;
       }
       &:hover{
         cursor:pointer;

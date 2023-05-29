@@ -3,6 +3,7 @@ import { ToastContainer, toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 import styles from "../styles/Home.module.scss"
 import { API_URL } from "../config"
+import { FaCheck } from "react-icons/fa"
 
 export default function Home({ shops = [], foods = [], cart = [],setCart }) {
   const [foodsByShop, setFoodsByShop] = useState([])
@@ -30,7 +31,9 @@ export default function Home({ shops = [], foods = [], cart = [],setCart }) {
     }
     
   }
-
+  const isFoodInCart = (food) => {
+  return cart.some(item=>item._id===food._id)
+}
  
   return (
     <>
@@ -55,7 +58,8 @@ export default function Home({ shops = [], foods = [], cart = [],setCart }) {
               <div className={styles.card} key={item._id} onClick={()=>handleCardClick(item)}>
                 <img src={`${API_URL}${item.image}`} alt="No image" />
                 <p>{item.name}</p> 
-                <p>Цена: {item.price }</p>
+                <p>Цена: {item.price}</p>
+              {isFoodInCart(item)?(<FaCheck/>):null}  
              </div>
            ))
           ):null

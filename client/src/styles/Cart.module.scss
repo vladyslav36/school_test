@@ -35,14 +35,10 @@
         justify-content: space-between;
         padding: 0 5px;
       }
-      &:hover {
-        cursor: pointer;
-      }
-      &:active {
-        transform: scale(0.99);
-      }
+     
       .delete_btn{
         position:absolute;
+        cursor:pointer;
         top:-15px;
         right:-15px;
         color:red;
@@ -54,7 +50,8 @@
         svg{
           vertical-align: middle;
           font-size:20px;    
-          color:green;      
+          color:green;    
+          cursor:pointer;  
         }
        
       }

@@ -1,3 +1,7 @@
+
+
+@import './btn_wave';
+
 .container {
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -22,7 +26,7 @@
       font-size: 14px;
       padding: 3px;
       box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
-      position:relative;
+      position: relative;
       img {
         width: 100%;
         height: 100%;
@@ -35,25 +39,24 @@
         justify-content: space-between;
         padding: 0 5px;
       }
-     
-      .delete_btn{
-        position:absolute;
-        cursor:pointer;
-        top:-15px;
-        right:-15px;
-        color:red;
-        font-size:20px;
+
+      .delete_btn {
+        position: absolute;
+        cursor: pointer;
+        top: -15px;
+        right: -15px;
+        color: red;
+        font-size: 20px;
       }
-      .left_footer_card{
-        display:flex;
+      .left_footer_card {
+        display: flex;
         justify-content: flex-start;
-        svg{
+        svg {
           vertical-align: middle;
-          font-size:20px;    
-          color:green;    
-          cursor:pointer;  
+          font-size: 20px;
+          color: green;
+          cursor: pointer;
         }
-       
       }
     }
   }
@@ -84,6 +87,8 @@
   display: flex;
   justify-content: space-between;
   .submit {
+    position: relative;
+    overflow: hidden;
     border-radius: 10px;
     border: none;
     background-color: #186a3b;
@@ -92,12 +97,11 @@
     &:hover {
       cursor: pointer;
     }
-    &:active {
-      transform: scale(0.99);
-    }
+    
+    @extend %btn_wave;
   }
 }
-.empty_cart{
-  color:#555;
-  text-align:center;
+.empty_cart {
+  color: #555;
+  text-align: center;
 }
